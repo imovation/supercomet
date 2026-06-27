@@ -2,6 +2,8 @@
 comet_change: add-architecture-requirements
 role: technical-design
 canonical_spec: openspec
+archived-with: 2026-06-27-add-architecture-requirements
+status: final
 ---
 
 # 架构约束编码 — 技术设计

@@ -1,5 +1,5 @@
 workflow: full
-phase: build
+phase: archive
 context_compression: off
 build_mode: direct
 build_pause: null
@@ -7,17 +7,19 @@ subagent_dispatch: null
 tdd_mode: direct
 review_mode: off
 isolation: branch
-verify_mode: null
+verify_mode: full
 auto_transition: true
 base_ref: null
 design_doc: docs/superpowers/specs/2025-06-27-add-architecture-requirements-design.md
 plan: null
-verify_result: pending
-verification_report: null
-branch_status: pending
+verify_result: pass
+verification_report: docs/superpowers/reports/2025-06-27-add-architecture-requirements-verify.md
+branch_status: handled
 created_at: 2026-06-27
-verified_at: null
-archived: false
+verified_at: 2026-06-27
+archived: true
 handoff_context: openspec/changes/add-architecture-requirements/.comet/handoff/design-context.json
 handoff_hash: 89f00062922e75ec6d0c906acb1b8f14a8d60a52f14fab8e6fd2228a9d64bb84
 direct_override: true
+build_command: "openspec validate supercomet"
+verify_command: "openspec validate supercomet"
