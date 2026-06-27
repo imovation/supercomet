@@ -1,0 +1,14 @@
+{
+  "change": "add-architecture-requirements",
+  "phase": "design",
+  "mode": "compact",
+  "canonical_spec": "openspec",
+  "generated_by": "comet-handoff.sh",
+  "context_hash": "89f00062922e75ec6d0c906acb1b8f14a8d60a52f14fab8e6fd2228a9d64bb84",
+  "files": [
+    { "path": "openspec/changes/add-architecture-requirements/proposal.md", "sha256": "cc9b5e55b4ec6d36acda886eeebf8f9f102969ce96e4be65bfe5d8be565191d9" },
+    { "path": "openspec/changes/add-architecture-requirements/design.md", "sha256": "9ad32f483caf3baac386108000770c9519f3536529c68475c44cb8bfec58f7cd" },
+    { "path": "openspec/changes/add-architecture-requirements/tasks.md", "sha256": "3f575bf97edf3cd90afe189d6f877abc7a968db8aab344c8fedd5f47cc87652a" },
+    { "path": "openspec/changes/add-architecture-requirements/specs/supercomet/spec.md", "sha256": "568cec8d5d11c802e317389d089318201c86c9fd54fc9a98a15cbdf51450406f" }
+  ]
+}

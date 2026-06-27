@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.obsidian/
+.codegraph/codegraph.db
+.codegraph/codegraph.db-shm
+.codegraph/codegraph.db-wal
+.codegraph/daemon.log
+.codegraph/daemon.pid
+.codegraph/daemon.sock
+*.log

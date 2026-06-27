@@ -1,0 +1,14 @@
+{
+  "name": "supercomet",
+  "version": "0.1.0",
+  "description": "Comet skill bundle — OpenSpec × Superpowers deep integration with bidirectional traceability, structured speculation, auto test-mapping, and model tiering",
+  "bin": {
+    "supercomet": "bin/supercomet.js"
+  },
+  "peerDependencies": {
+    "@rpamis/comet": ">=0.3.0"
+  },
+  "dependencies": {
+    "@fission-ai/openspec": "^1.4.1"
+  }
+}
