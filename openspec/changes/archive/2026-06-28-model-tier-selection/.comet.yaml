@@ -17,7 +17,7 @@ verification_report: docs/superpowers/reports/2026-06-28-model-tier-selection-ve
 branch_status: handled
 created_at: 2026-06-28
 verified_at: 2026-06-28
-archived: false
+archived: true
 handoff_context: openspec/changes/model-tier-selection/.comet/handoff/design-context.json
 handoff_hash: 005e40f90b01b5eef64469e8d6d2c2fcad2ac881bc8cb2eb6a949f35c5123827
 build_command: bats test/shell/model-tier-selection.bats

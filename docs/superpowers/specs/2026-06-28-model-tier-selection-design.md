@@ -2,6 +2,8 @@
 comet_change: model-tier-selection
 role: technical-design
 canonical_spec: openspec
+archived-with: 2026-06-28-model-tier-selection
+status: final
 ---
 
 # model-tier-selection — Technical Design
