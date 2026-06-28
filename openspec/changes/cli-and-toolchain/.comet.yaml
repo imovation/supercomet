@@ -1,5 +1,5 @@
 workflow: full
-phase: verify
+phase: archive
 context_compression: off
 build_mode: executing-plans
 build_pause: null
@@ -12,11 +12,11 @@ auto_transition: true
 base_ref: 4b1b4b21b4f8ade0c85a944cce34805ed2f434ed
 design_doc: docs/superpowers/specs/2026-06-28-cli-and-toolchain-design.md
 plan: null
-verify_result: pending
+verify_result: pass
 verification_report: docs/superpowers/reports/2026-06-28-cli-and-toolchain-verify.md
 branch_status: handled
 created_at: 2026-06-28
-verified_at: null
+verified_at: 2026-06-28
 archived: false
 handoff_context: openspec/changes/cli-and-toolchain/.comet/handoff/design-context.json
 handoff_hash: fe9a91a9ebd7a667e959478a0c09492c1e5ffb51c9aea33c428f3da81c51bd3e
