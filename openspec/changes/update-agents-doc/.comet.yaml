@@ -1,5 +1,5 @@
 workflow: tweak
-phase: build
+phase: verify
 context_compression: off
 build_mode: direct
 build_pause: null
@@ -13,8 +13,8 @@ base_ref: 677492aa116c1f626cdb797faac62a79d7ceaeb6
 design_doc: null
 plan: null
 verify_result: pending
-verification_report: null
-branch_status: pending
+verification_report: docs/superpowers/reports/2026-06-29-update-agents-doc-verify.md
+branch_status: handled
 created_at: 2026-06-28
 verified_at: null
 archived: false
