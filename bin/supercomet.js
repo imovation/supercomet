@@ -1,9 +1,46 @@
 #!/usr/bin/env node
 
-const { readFileSync, existsSync } = require('fs');
+const { readFileSync, existsSync, copyFileSync, mkdirSync, readdirSync, chmodSync } = require('fs');
 const { resolve } = require('path');
 
 const VERSION = '0.1.0';
+
+function cmdInit() {
+  const srcDir = resolve(__dirname, '..', 'src');
+  const cwd = process.cwd();
+
+  const scriptsDir = resolve(cwd, 'comet', 'scripts');
+  const refDir = resolve(cwd, 'comet', 'reference');
+
+  mkdirSync(scriptsDir, { recursive: true });
+  mkdirSync(refDir, { recursive: true });
+
+  const scriptSrcDir = resolve(srcDir, 'scripts');
+  let copiedCount = 0;
+  if (existsSync(scriptSrcDir)) {
+    const files = readdirSync(scriptSrcDir);
+    for (const f of files) {
+      if (f.endsWith('.sh')) {
+        const src = resolve(scriptSrcDir, f);
+        const dest = resolve(scriptsDir, f);
+        copyFileSync(src, dest);
+        try { chmodSync(dest, 0o755); } catch (e) { /* ignore */ }
+        copiedCount++;
+        console.log(`  ${f} → comet/scripts/`);
+      }
+    }
+  }
+
+  const skillSrc = resolve(srcDir, 'skills', 'bidirectional-verify', 'SKILL.md');
+  if (existsSync(skillSrc)) {
+    const refDest = resolve(refDir, 'bidirectional-verify.md');
+    copyFileSync(skillSrc, refDest);
+    copiedCount++;
+    console.log(`  SKILL.md → comet/reference/bidirectional-verify.md`);
+  }
+
+  console.log(`supercomet: deployed ${copiedCount} files to comet/`);
+}
 
 function main() {
   const args = process.argv.slice(2);
@@ -15,7 +52,7 @@ function main() {
   }
 
   if (cmd === 'init') {
-    console.log('supercomet: init not yet implemented');
+    cmdInit();
     return;
   }
 

@@ -8,3 +8,5 @@ dist/
 .codegraph/daemon.pid
 .codegraph/daemon.sock
 *.log
+comet/scripts/
+comet/reference/
