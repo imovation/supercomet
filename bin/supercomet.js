@@ -44,14 +44,29 @@ function semverSatisfies(version, range) {
 function checkCometPrerequisites() {
   const issued = [];
 
-  // Check for Comet core script (comet creates this, supercomet does not)
-  const cometEnv = resolve(process.cwd(), 'comet', 'scripts', 'comet-env.sh');
-  const hasCometScript = existsSync(cometEnv);
+  // Check for Comet core script in multiple locations
+  const cwd = process.cwd();
+  const candidates = [
+    resolve(cwd, 'comet', 'scripts', 'comet-env.sh'),
+    resolve(cwd, '.opencode', 'skills', 'comet', 'scripts', 'comet-env.sh'),
+  ];
 
-  if (!hasCometScript) {
+  // Also search for comet-env.sh in known skill directories
+  try {
+    const home = require('os').homedir();
+    const extra = execSync(
+      `find "${home}"/.*/skills "${home}"/.config -path '*/comet/scripts/comet-env.sh' -type f 2>/dev/null | head -1`,
+      { timeout: 3000, stdio: ['ignore', 'pipe', 'ignore'] }
+    ).toString().trim();
+    if (extra) candidates.push(extra);
+  } catch {}
+
+  const hasComet = candidates.some(p => existsSync(p));
+
+  if (!hasComet) {
     issued.push('WARN: comet-env.sh not found — Comet may not be installed in this project.');
-    issued.push('      supercomet depends on @rpamis/comet. Install it first:');
-    issued.push('      npm install --save-dev @rpamis/comet');
+    issued.push('      Install and initialize Comet:');
+    issued.push('      npm install --save-dev @rpamis/comet && npx comet init');
   }
 
   // Check Comet version via npm
