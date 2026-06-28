@@ -4,11 +4,11 @@
   "mode": "compact",
   "canonical_spec": "openspec",
   "generated_by": "comet-handoff.sh",
-  "context_hash": "39da657f51e3f0acabe85341d32f7fafc12e0f8b97bb102c20e0f94077a5d243",
+  "context_hash": "7be0c124c5a3293ce8da830ee212cf4a56588fba5aee1c41ed20e8d1482714fe",
   "files": [
     { "path": "openspec/changes/revert-restore/proposal.md", "sha256": "d0a3673fd3a689ee2e5ac0232d2b17da111e7535ae774a9fdfa83d3ca47dc31f" },
     { "path": "openspec/changes/revert-restore/design.md", "sha256": "b6acc2611da2ec16dd8ecaae705d7f1809eacf596b3edd32bd667cb596a87f36" },
-    { "path": "openspec/changes/revert-restore/tasks.md", "sha256": "a6ccd230f6b6940f227445e003114435546b9104797dd669a8387c51031bdbaa" },
+    { "path": "openspec/changes/revert-restore/tasks.md", "sha256": "f5fc5691ade05db3d1b46615e1a8609a2f6a7eae2460da930bb43985d18cc786" },
     { "path": "openspec/changes/revert-restore/specs/revert-restore/spec.md", "sha256": "dcd1f3600fa6ed869d636e811c0e34db846f73116b25acfb9df1b49ebdf24fb5" }
   ]
 }
