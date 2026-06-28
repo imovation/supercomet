@@ -45,14 +45,10 @@ function checkCometPrerequisites() {
   const issued = [];
 
   const cometEnv = resolve(process.cwd(), 'comet', 'scripts', 'comet-env.sh');
-  const hasComet = existsSync(cometEnv);
+  const hasCometScript = existsSync(cometEnv);
 
-  if (!hasComet) {
-    issued.push('WARN: comet-env.sh not found — Comet not initialized in this project.');
-    issued.push('      Run "comet init" first, then "supercomet init".');
-  }
-
-  // Check Comet version via npm
+  // Detect if @rpamis/comet package is installed (globally or locally)
+  let cometPkgVer = null;
   try {
     const out = execSync('npm list @rpamis/comet --depth=0 --json 2>/dev/null', {
       cwd: process.cwd(),
@@ -71,20 +67,30 @@ function checkCometPrerequisites() {
       }
       return null;
     };
-    const cometVer = findVer(data.dependencies);
+    cometPkgVer = findVer(data.dependencies);
+  } catch {}
 
-    if (cometVer) {
-      const compat = loadVersionYaml();
-      if (compat && compat.comet) {
-        const ok = semverSatisfies(cometVer, compat.comet);
-        if (ok === false) {
-          issued.push(`WARN: Comet ${cometVer} is older than compatible range (${compat.comet}).`);
-          issued.push('      Consider upgrading: npm install @rpamis/comet@latest');
-        }
+  if (!hasCometScript) {
+    if (cometPkgVer) {
+      issued.push('WARN: Comet v' + cometPkgVer + ' is installed but not initialized in this project.');
+      issued.push('      Run "comet init" first, then "supercomet init".');
+    } else {
+      issued.push('WARN: Comet not found. Install and initialize it first:');
+      issued.push('      npm install -g @rpamis/comet && comet init');
+    }
+    return issued;
+  }
+
+  // comet-env.sh exists — check version compatibility
+  if (cometPkgVer) {
+    const compat = loadVersionYaml();
+    if (compat && compat.comet) {
+      const ok = semverSatisfies(cometPkgVer, compat.comet);
+      if (ok === false) {
+        issued.push(`WARN: Comet ${cometPkgVer} is older than compatible range (${compat.comet}).`);
+        issued.push('      Consider upgrading: npm install -g @rpamis/comet@latest');
       }
     }
-  } catch {
-    issued.push('INFO: Could not detect Comet version. Ensure @rpamis/comet is installed.');
   }
 
   return issued;
