@@ -4,11 +4,11 @@
   "mode": "compact",
   "canonical_spec": "openspec",
   "generated_by": "comet-handoff.sh",
-  "context_hash": "59f4efa5a3ba69e7022c9d05af97f1ec3185b3897fdde080c9a44b50cc300ded",
+  "context_hash": "fe9a91a9ebd7a667e959478a0c09492c1e5ffb51c9aea33c428f3da81c51bd3e",
   "files": [
     { "path": "openspec/changes/cli-and-toolchain/proposal.md", "sha256": "b907b08a371cb35d736593de8dafd17ca772d3041ddb6708b84b48388b98477e" },
     { "path": "openspec/changes/cli-and-toolchain/design.md", "sha256": "0061c4a361b0b1e738976fa99f8695dc007f3a469f1d3b3271193eb42d871828" },
-    { "path": "openspec/changes/cli-and-toolchain/tasks.md", "sha256": "4b6fbed9cb028a019480a8a1299f0417f0252f094440f34a4e39afd91d5a3234" },
+    { "path": "openspec/changes/cli-and-toolchain/tasks.md", "sha256": "626a2c153f0e1d2e5efd73d329c1bfe43eb862d9a56cd79b2f9586c9b1f6cd07" },
     { "path": "openspec/changes/cli-and-toolchain/specs/cli-and-toolchain/spec.md", "sha256": "8fa04e2766fd43891f544adb990c2b4564574c038e24f21eb8e19b6505d09167" }
   ]
 }
