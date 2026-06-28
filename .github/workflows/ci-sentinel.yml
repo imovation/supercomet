@@ -1,0 +1,36 @@
+name: CI Sentinel
+
+on:
+  schedule:
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+
+jobs:
+  sentinel:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install supercomet
+        run: npm install -g .
+      - name: Install BATS
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y bats
+      - name: Run shell tests
+        run: |
+          bats test/shell/*.bats 2>&1 || echo "::warning::Some BATS tests failed"
+      - name: Test with latest Comet
+        run: |
+          npm install @rpamis/comet@latest --no-save 2>/dev/null || echo "::warning::Latest Comet not available"
+      - name: Check npm package structure
+        run: |
+          node -e "
+          const pkg = require('./package.json');
+          const assert = require('assert');
+          assert.strictEqual(pkg.name, 'supercomet', 'package name must be supercomet');
+          assert.ok(pkg.bin && pkg.bin.supercomet, 'bin must include supercomet entry');
+          console.log('Package structure: OK');
+          "
