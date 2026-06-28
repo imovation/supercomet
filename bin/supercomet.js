@@ -31,12 +31,18 @@ function cmdInit() {
     }
   }
 
-  const skillSrc = resolve(srcDir, 'skills', 'bidirectional-verify', 'SKILL.md');
-  if (existsSync(skillSrc)) {
-    const refDest = resolve(refDir, 'bidirectional-verify.md');
-    copyFileSync(skillSrc, refDest);
-    copiedCount++;
-    console.log(`  SKILL.md → comet/reference/bidirectional-verify.md`);
+  const skillsDir = resolve(srcDir, 'skills');
+  if (existsSync(skillsDir)) {
+    const skillNames = readdirSync(skillsDir);
+    for (const name of skillNames) {
+      const skillMd = resolve(skillsDir, name, 'SKILL.md');
+      if (existsSync(skillMd)) {
+        const refDest = resolve(refDir, `${name}.md`);
+        copyFileSync(skillMd, refDest);
+        copiedCount++;
+        console.log(`  ${name}/SKILL.md → comet/reference/${name}.md`);
+      }
+    }
   }
 
   console.log(`supercomet: deployed ${copiedCount} files to comet/`);
