@@ -1,5 +1,4 @@
 node_modules/
-dist/
 .obsidian/
 .codegraph/codegraph.db
 .codegraph/codegraph.db-shm
