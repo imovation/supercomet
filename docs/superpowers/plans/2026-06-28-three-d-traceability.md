@@ -2,6 +2,7 @@
 change: three-d-traceability
 design-doc: docs/superpowers/specs/2026-06-28-three-d-traceability-design.md
 base-ref: 68673f8d7262f722fa654cc675c00f53a4a2007a
+archived-with: 2026-06-28-three-d-traceability
 ---
 
 # three-d-traceability Implementation Plan
@@ -25,6 +26,7 @@ base-ref: 68673f8d7262f722fa654cc675c00f53a4a2007a
 - .comet.yaml tasks 条目的 YAML key 使用不带引号的缩进格式（与现有 .comet.yaml 风格一致）
 - 仅消费上游产出文件，不依赖 upstream 内部实现
 
+archived-with: 2026-06-28-three-d-traceability
 ---
 
 ### Task 1: comet-trace.sh — 双向追溯查询脚本
@@ -473,6 +475,7 @@ git add src/scripts/comet-trace.sh
 git commit -m "feat(three-d-traceability): add comet-trace.sh with forward and reverse query modes"
 ```
 
+archived-with: 2026-06-28-three-d-traceability
 ---
 
 ### Task 2: .comet.yaml schema 扩展 + set-task 写入脚本
@@ -770,6 +773,7 @@ git add src/scripts/comet-state-set-task.sh
 git commit -m "feat(three-d-traceability): add comet-state-set-task.sh for traceability field writes"
 ```
 
+archived-with: 2026-06-28-three-d-traceability
 ---
 
 ### Task 3: comet-guard.sh 闸门集成——verify→archive 时检查 commits 非空
@@ -970,6 +974,7 @@ git add src/scripts/comet-guard-check-commits.sh
 git commit -m "feat(three-d-traceability): add comet-guard-check-commits.sh for verify→archive gate"
 ```
 
+archived-with: 2026-06-28-three-d-traceability
 ---
 
 ### Task 4: BATS 测试——5 场景
@@ -1194,6 +1199,7 @@ git add test/shell/comet-trace.bats
 git commit -m "test(three-d-traceability): add BATS tests for forward/reverse trace and gate check"
 ```
 
+archived-with: 2026-06-28-three-d-traceability
 ---
 
 ### 自检

@@ -2,6 +2,8 @@
 comet_change: three-d-traceability
 role: technical-design
 canonical_spec: openspec
+archived-with: 2026-06-28-three-d-traceability
+status: final
 ---
 
 # three-d-traceability Design Doc
