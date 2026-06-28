@@ -14,7 +14,6 @@ Options:
   --output PATH        Output path (default: openspec/explore-findings.md)
   --help               Show this help
 USAGE
-  exit 0
 }
 
 MODE=""
@@ -26,14 +25,15 @@ while [[ $# -gt 0 ]]; do
     --mode) MODE="$2"; shift 2 ;;
     --from-file) FROM_FILE="$2"; shift 2 ;;
     --output) OUTPUT="$2"; shift 2 ;;
-    --help) usage ;;
-    *) echo "ERROR: Unknown option: $1" >&2; usage ;;
+    --help) usage; exit 0 ;;
+    *) echo "ERROR: Unknown option: $1" >&2; usage; exit 1 ;;
   esac
 done
 
 if [ -z "$MODE" ]; then
   echo "ERROR: --mode is required (full or quick)" >&2
   usage
+  exit 1
 fi
 
 if [ "$MODE" != "full" ] && [ "$MODE" != "quick" ]; then
@@ -44,6 +44,7 @@ fi
 if [ -z "$FROM_FILE" ]; then
   echo "ERROR: --from-file is required" >&2
   usage
+  exit 1
 fi
 
 if [ ! -f "$FROM_FILE" ]; then
