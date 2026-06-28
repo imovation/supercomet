@@ -216,7 +216,7 @@ EOF
 
   [ "$status" -eq 1 ]
   echo "$output" | grep -q "WARN"
-  [ -f "$OUTPUT_DIR/explore-findings.md" ]
+  [ ! -f "$OUTPUT_DIR/explore-findings.md" ]
 }
 
 # --- Quick Mode Tests ---
