@@ -17,7 +17,7 @@ verification_report: docs/superpowers/reports/2026-06-28-git-notes-verify.md
 branch_status: handled
 created_at: 2026-06-28
 verified_at: 2026-06-28
-archived: false
+archived: true
 handoff_context: openspec/changes/git-notes/.comet/handoff/design-context.json
 handoff_hash: 89e7db1e5897fa59a9bd914f1c4d94ed1655214199e9df1aef1e463a86e63edf
 build_command: bats test/shell/git-notes.bats
