@@ -5,9 +5,6 @@
   "bin": {
     "supercomet": "bin/supercomet.js"
   },
-  "scripts": {
-    "postinstall": "node -e \"try{require.resolve('@rpamis/comet')}catch(e){console.log('NOTE: @rpamis/comet is a peer dependency. Install it: npm install -g @rpamis/comet')}\""
-  },
   "peerDependencies": {
     "@rpamis/comet": ">=0.3.0"
   },

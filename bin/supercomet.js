@@ -136,6 +136,16 @@ function cmdInit() {
 }
 
 function main() {
+  // Quick peer dependency check (non-blocking)
+  try {
+    const r = execSync('npm list -g @rpamis/comet --depth=0 2>/dev/null', { timeout: 3000 });
+    if (!r.toString().includes('@rpamis/comet@')) {
+      console.log('NOTE: @rpamis/comet is a peer dependency. Install: npm install -g @rpamis/comet');
+    }
+  } catch {
+    console.log('NOTE: @rpamis/comet is a peer dependency. Install: npm install -g @rpamis/comet');
+  }
+
   const args = process.argv.slice(2);
   const cmd = args[0];
 
