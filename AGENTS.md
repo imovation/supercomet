@@ -10,15 +10,16 @@ supercomet 是一个 **Comet 技能扩展包**（npm 包），不是传统应用
 
 ```
 bin/supercomet.js          # CLI 入口（npm 包 bin 字段）
-src/skills/                # supercomet 自有 Skill（目前空目录，待实现）
-src/scripts/               # Shell 脚本源码（待实现）
+src/skills/                # supercomet 自有 Skill（comet-speculate, comet-quick-speculate, spec-to-test, bidirectional-verify）
+src/scripts/               # Shell 脚本源码（10 个 .sh 脚本覆盖 7 个增强）
 dist/                      # 发布产物，含 version.yaml（兼容版本声明）
-test/shell/                # BATS Shell 测试（待实现）
-test/integration/          # 端到端集成测试（待实现）
+test/shell/                # BATS Shell 测试（7 个文件，61 个测试用例）
+test/integration/          # 端到端集成测试（2 个文件，15 个测试用例）
+.github/workflows/         # CI Sentinel：每日自动检测上游兼容性
 .opencode/                 # OpenCode 插件：commands/、skills/、rules/
 .agents/skills/            # Superpowers Skill（来自 obra/superpowers，通过 skills-lock.json 锁定）
 openspec/                  # OpenSpec：specs/ 主规格、changes/ 变更记录、archive/
-docs/superpowers/           # 设计文档、验证报告（按日期命名）
+docs/superpowers/           # 设计文档、验证报告、实施计划（按日期命名）
 pre-development/           # 历史决策文档与中间分析
 .comet/config.yaml         # Comet 自身配置：review_mode、auto_transition
 .codegraph/                # CodeGraph 索引（支持 codegraph_explore）
@@ -51,11 +52,19 @@ pre-development/           # 历史决策文档与中间分析
 # 查看版本
 supercomet version
 
-# 部署增强到当前项目（尚未实现）
+# 部署增强到当前项目
 supercomet init
 ```
 
-本项目目前没有 build、lint、test、typecheck 命令。测试目录（`test/shell/`、`test/integration/`）存在但为空，计划使用 BATS 进行 Shell 测试。
+本项目目前没有 build、lint、typecheck 命令。测试使用 BATS：
+
+```bash
+# 运行全部 Shell 单元测试（61 个测试用例）
+bats test/shell/*.bats
+
+# 运行集成测试（15 个测试用例）
+bats test/integration/*.bats
+```
 
 ## Comet 工作流
 
