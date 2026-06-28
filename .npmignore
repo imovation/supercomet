@@ -1,0 +1,6 @@
+node_modules/
+.obsidian/
+.codegraph/
+*.log
+comet/
+.opencode/node_modules/
