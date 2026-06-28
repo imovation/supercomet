@@ -44,12 +44,12 @@ function semverSatisfies(version, range) {
 function checkCometPrerequisites() {
   const issued = [];
 
-  // Check if Comet skill directory structure exists
-  const cometScripts = resolve(process.cwd(), 'comet', 'scripts');
-  const hasCometDir = existsSync(cometScripts);
+  // Check for Comet core script (comet creates this, supercomet does not)
+  const cometEnv = resolve(process.cwd(), 'comet', 'scripts', 'comet-env.sh');
+  const hasCometScript = existsSync(cometEnv);
 
-  if (!hasCometDir) {
-    issued.push('WARN: comet/scripts/ not found — Comet may not be initialized in this project.');
+  if (!hasCometScript) {
+    issued.push('WARN: comet-env.sh not found — Comet may not be installed in this project.');
     issued.push('      supercomet depends on @rpamis/comet. Install it first:');
     issued.push('      npm install --save-dev @rpamis/comet');
   }
