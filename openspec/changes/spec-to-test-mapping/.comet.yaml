@@ -1,5 +1,5 @@
 workflow: full
-phase: build
+phase: archive
 context_compression: off
 build_mode: executing-plans
 build_pause: null
@@ -7,16 +7,18 @@ subagent_dispatch: null
 tdd_mode: tdd
 review_mode: standard
 isolation: branch
-verify_mode: null
+verify_mode: light
 auto_transition: true
 base_ref: 4b1b4b21b4f8ade0c85a944cce34805ed2f434ed
 design_doc: docs/superpowers/specs/2026-06-28-spec-to-test-mapping-design.md
-plan: null
-verify_result: pending
-verification_report: null
-branch_status: pending
+plan: docs/superpowers/plans/2026-06-28-spec-to-test-mapping.md
+verify_result: pass
+verification_report: docs/superpowers/reports/2026-06-28-spec-to-test-mapping-verify.md
+branch_status: handled
 created_at: 2026-06-28
-verified_at: null
+verified_at: 2026-06-28
 archived: false
 handoff_context: openspec/changes/spec-to-test-mapping/.comet/handoff/design-context.json
 handoff_hash: 6a79f06c8214d24d19fad1954429ce172640f890105ee889307d29a955064835
+build_command: bats test/shell/spec-to-test-mapping.bats
+verify_command: bats test/shell/spec-to-test-mapping.bats
