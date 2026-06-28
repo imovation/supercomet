@@ -44,13 +44,17 @@ function semverSatisfies(version, range) {
 function checkCometPrerequisites() {
   const issued = [];
 
-  // Comet deploys scripts to .opencode/skills/comet/scripts/ on OpenCode
-  const candidates = [
-    resolve(process.cwd(), '.opencode', 'skills', 'comet', 'scripts', 'comet-env.sh'),
-    resolve(process.cwd(), 'comet', 'scripts', 'comet-env.sh'),
-  ];
-  const cometEnv = candidates.find(p => existsSync(p)) || candidates[0];
-  const hasCometScript = existsSync(cometEnv);
+  // Search for comet-env.sh across known platform paths (same strategy as Comet itself)
+  let cometEnv = null;
+  try {
+    const home = require('os').homedir();
+    const result = execSync(
+      `find . "${home}"/.*/skills "${home}"/.config "${home}"/.gemini -path '*/comet/scripts/comet-env.sh' -type f -print -quit 2>/dev/null`,
+      { cwd: process.cwd(), timeout: 5000, stdio: ['ignore', 'pipe', 'ignore'] }
+    ).toString().trim();
+    if (result) cometEnv = result;
+  } catch {}
+  const hasCometScript = cometEnv && existsSync(cometEnv);
 
   // Detect if @rpamis/comet package is installed (globally or locally)
   let cometPkgVer = null;
