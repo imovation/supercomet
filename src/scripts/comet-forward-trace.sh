@@ -138,6 +138,14 @@ done
 COVERAGE=$(( TOTAL > 0 ? (COVERED * 100 / TOTAL) : 0 ))
 echo "Coverage: $COVERED/$TOTAL = ${COVERAGE}%" >&2
 
+# --- Run backward trace ---
+ORPHAN_ROWS=""
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+BACKWARD_SCRIPT="$SCRIPT_DIR/comet-backward-trace.sh"
+if [ -f "$BACKWARD_SCRIPT" ]; then
+  ORPHAN_ROWS=$(bash "$BACKWARD_SCRIPT" --spec-dir "$SPEC_DIR" --test-dir "$TEST_DIR" 2>/dev/null || true)
+fi
+
 # --- Determine gate ---
 if [ "$TOTAL" -eq 0 ]; then
   GATE="BLOCKED"
@@ -151,7 +159,59 @@ else
   GATE_REASON="{$MISSING} missing scenarios"
 fi
 
-echo "Gate: $GATE" >&2
+# --- Write traceability.md ---
+OUTPUT_FILE="$OUTPUT_DIR/traceability.md"
+
+{
+  echo "# Spec ↔ Test Traceability Report"
+  echo ""
+  echo "## 1. Coverage Matrix (正向：Spec → Test)"
+  echo "| Requirement | Scenario | Test Found | Status |"
+  echo -n "$COVERAGE_ROWS"
+  echo "Coverage: $COVERED/$TOTAL = ${COVERAGE}%"
+  echo ""
+  echo "## 2. Orphan Tests (反向：Test → Spec)"
+  if [ -n "$ORPHAN_ROWS" ]; then
+    echo "| Test Function | Matched Scenario | Status |"
+    echo -n "$ORPHAN_ROWS"
+  else
+    echo "| (无孤儿测试) | - | ✅ |"
+  fi
+  echo ""
+  echo "## 3. Edge Case Analysis"
+  echo "| Scenario | GIVEN Condition | Code Branch? |"
+  for scenario in "${ALL_SCENARIOS[@]}"; do
+    echo "| $scenario | (见 spec 描述) | (需人工补充) |"
+  done
+  echo ""
+  echo "## 4. Gate Verdict"
+  if [ "$GATE" = "PASS" ]; then
+    echo "Spec Coverage: ✅ PASS"
+  else
+    echo "Spec Coverage: ❌ BLOCKED"
+  fi
+  if [ -z "$ORPHAN_ROWS" ]; then
+    echo "Test Orphans: ✅ CLEAN"
+  else
+    orphan_count=$(echo "$ORPHAN_ROWS" | grep -c "WARN" || true)
+    echo "Test Orphans: ⚠️ $orphan_count orphan(s)"
+  fi
+  echo ""
+  echo "## 5. Next Action"
+  if [ "$GATE" = "PASS" ]; then
+    echo "✅ → Proceed to archive"
+  else
+    echo "❌ → Blocking: $GATE_REASON. Return to implementer."
+  fi
+  echo ""
+  if [ -n "$MODE_WARN" ]; then
+    echo "$MODE_WARN"
+    echo ""
+  fi
+  echo "GATE: $GATE"
+} > "$OUTPUT_FILE"
+
+echo "traceability.md written with Gate: $GATE" >&2
 if [ "$GATE" = "PASS" ]; then
   exit 0
 else
