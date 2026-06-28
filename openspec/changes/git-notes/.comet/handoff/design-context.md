@@ -3,7 +3,7 @@
 - Change: git-notes
 - Phase: design
 - Mode: compact
-- Context hash: 42a49046d1268505d2cf5fe7b59923b1edd3bd5511253c2e20b606349623bb0d
+- Context hash: 89e7db1e5897fa59a9bd914f1c4d94ed1655214199e9df1aef1e463a86e63edf
 
 Generated-by: comet-handoff.sh
 
@@ -101,22 +101,22 @@ task_id=1.1 requirement_id=bidirectional-verify scenario=正向反查 commits=ab
 
 - Source: openspec/changes/git-notes/tasks.md
 - Lines: 1-13
-- SHA256: dc53ff93fe363486ceb96f10fb3520c7dc0f2fad72d02fe2da7c56f7b40b98a5
+- SHA256: 3930f2ac24d5621040db4824dca05e8cd9595f307cc779a576d6d1c08abd5e57
 
 ```md
 ## 1. 核心脚本
 
-- [ ] 1.1 实现 `src/scripts/comet-git-notes.sh` — git notes append 写入 task 追溯信息
-- [ ] 1.2 实现 `comet-git-notes.sh --recover` — 从 git notes 恢复进度映射
-- [ ] 1.3 修改 `src/scripts/comet-state-set-task.sh` — task 完成时自动调用 git-notes 写入
+- [x] 1.1 实现 `src/scripts/comet-git-notes.sh` — git notes append 写入 task 追溯信息
+- [x] 1.2 实现 `comet-git-notes.sh --recover` — 从 git notes 恢复进度映射
+- [x] 1.3 修改 `src/scripts/comet-state-set-task.sh` — task 完成时自动调用 git-notes 写入
 
 ## 2. 部署
 
-- [ ] 2.1 `bin/supercomet.js` 的 `supercomet init` 增加部署 git-notes 脚本
+- [x] 2.1 `bin/supercomet.js` 的 `supercomet init` 增加部署 git-notes 脚本
 
 ## 3. 测试
 
-- [ ] 3.1 编写 `test/shell/git-notes.bats` — 覆盖 notes 写入、恢复流程、空 notes 处理
+- [x] 3.1 编写 `test/shell/git-notes.bats` — 覆盖 notes 写入、恢复流程、空 notes 处理
 ```
 
 ## openspec/changes/git-notes/specs/git-notes/spec.md

@@ -4,11 +4,11 @@
   "mode": "compact",
   "canonical_spec": "openspec",
   "generated_by": "comet-handoff.sh",
-  "context_hash": "42a49046d1268505d2cf5fe7b59923b1edd3bd5511253c2e20b606349623bb0d",
+  "context_hash": "89e7db1e5897fa59a9bd914f1c4d94ed1655214199e9df1aef1e463a86e63edf",
   "files": [
     { "path": "openspec/changes/git-notes/proposal.md", "sha256": "a80e9d35ffe09932ff6462acf20bf88e5d16780e8d044af721ffe5cfec5943cf" },
     { "path": "openspec/changes/git-notes/design.md", "sha256": "bf90ea80c860a3207abd8c3915a64c49a85488c0c4aeb98767de020636cac4c5" },
-    { "path": "openspec/changes/git-notes/tasks.md", "sha256": "dc53ff93fe363486ceb96f10fb3520c7dc0f2fad72d02fe2da7c56f7b40b98a5" },
+    { "path": "openspec/changes/git-notes/tasks.md", "sha256": "3930f2ac24d5621040db4824dca05e8cd9595f307cc779a576d6d1c08abd5e57" },
     { "path": "openspec/changes/git-notes/specs/git-notes/spec.md", "sha256": "991ae0d62c0d612a6970700f9ec8dc4397b4ee643a5194bed5c7429536a1251f" }
   ]
 }
