@@ -17,7 +17,7 @@ verification_report: docs/superpowers/reports/2026-06-28-cli-and-toolchain-verif
 branch_status: handled
 created_at: 2026-06-28
 verified_at: 2026-06-28
-archived: false
+archived: true
 handoff_context: openspec/changes/cli-and-toolchain/.comet/handoff/design-context.json
 handoff_hash: fe9a91a9ebd7a667e959478a0c09492c1e5ffb51c9aea33c428f3da81c51bd3e
 build_command: bats test/integration/e2e-toolchain.bats
