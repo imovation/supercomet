@@ -17,7 +17,7 @@ verification_report: docs/superpowers/reports/2026-06-28-revert-restore-verify.m
 branch_status: handled
 created_at: 2026-06-28
 verified_at: 2026-06-28
-archived: false
+archived: true
 handoff_context: openspec/changes/revert-restore/.comet/handoff/design-context.json
 handoff_hash: 7be0c124c5a3293ce8da830ee212cf4a56588fba5aee1c41ed20e8d1482714fe
 build_command: bats test/shell/revert-restore.bats

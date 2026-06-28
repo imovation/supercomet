@@ -2,6 +2,8 @@
 comet_change: revert-restore
 role: technical-design
 canonical_spec: openspec
+archived-with: 2026-06-28-revert-restore
+status: final
 ---
 
 # revert-restore — Technical Design
