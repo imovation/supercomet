@@ -2,6 +2,7 @@
 change: spec-to-test-mapping
 design-doc: docs/superpowers/specs/2026-06-28-spec-to-test-mapping-design.md
 base-ref: 4b1b4b21b4f8ade0c85a944cce34805ed2f434ed
+archived-with: 2026-06-28-spec-to-test-mapping
 ---
 
 # spec-to-test-mapping Implementation Plan

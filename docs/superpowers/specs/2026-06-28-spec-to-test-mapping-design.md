@@ -2,6 +2,8 @@
 comet_change: spec-to-test-mapping
 role: technical-design
 canonical_spec: openspec
+archived-with: 2026-06-28-spec-to-test-mapping
+status: final
 ---
 
 # spec-to-test-mapping — Technical Design

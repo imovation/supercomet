@@ -17,7 +17,7 @@ verification_report: docs/superpowers/reports/2026-06-28-spec-to-test-mapping-ve
 branch_status: handled
 created_at: 2026-06-28
 verified_at: 2026-06-28
-archived: false
+archived: true
 handoff_context: openspec/changes/spec-to-test-mapping/.comet/handoff/design-context.json
 handoff_hash: 6a79f06c8214d24d19fad1954429ce172640f890105ee889307d29a955064835
 build_command: bats test/shell/spec-to-test-mapping.bats
