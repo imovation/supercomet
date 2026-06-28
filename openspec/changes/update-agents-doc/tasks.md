@@ -1,0 +1,1 @@
+- [x] 1.1 AGENTS.md 开发命令节增加 --force 参数和 proposals 目录说明
