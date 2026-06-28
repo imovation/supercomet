@@ -32,6 +32,7 @@ pre-development/           # 历史决策文档与中间分析
 ### 狗粮自用（Dogfooding）
 - 本项目**自身使用 Comet 流程开发**，`openspec/specs/supercomet/spec.md` 是唯一权威规格
 - 每完成一个增强即部署并用于开发下一个增强（渐进式狗粮替换）
+- **所有代码变更必须走 Comet**：无论多少文件、多小改动，禁止绕过 `/comet` 直接提交。hotfix/tweak 是唯一捷径，但仍需通过对应 preset skill 创建 change 并归档
 - 所有设计决策来源记录在 `pre-development/` 下
 
 ### 上游不可修改
