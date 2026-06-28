@@ -1,5 +1,5 @@
 workflow: full
-phase: verify
+phase: archive
 context_compression: off
 build_mode: executing-plans
 build_pause: null
@@ -12,11 +12,11 @@ auto_transition: true
 base_ref: 4b1b4b21b4f8ade0c85a944cce34805ed2f434ed
 design_doc: docs/superpowers/specs/2026-06-28-model-tier-selection-design.md
 plan: null
-verify_result: pending
+verify_result: pass
 verification_report: docs/superpowers/reports/2026-06-28-model-tier-selection-verify.md
 branch_status: handled
 created_at: 2026-06-28
-verified_at: null
+verified_at: 2026-06-28
 archived: false
 handoff_context: openspec/changes/model-tier-selection/.comet/handoff/design-context.json
 handoff_hash: 005e40f90b01b5eef64469e8d6d2c2fcad2ac881bc8cb2eb6a949f35c5123827
