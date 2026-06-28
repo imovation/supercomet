@@ -6,9 +6,9 @@
 >
 > **用 OpenSpec 管自身规格**（dogfooding）。当 P0-1 完成后，这份 spec 将由双向反查脚本验证其自身 Scenario 与测试的覆盖。
 >
-> **功能需求来源**：`pre-development/OpenSpec-Superpowers-深度融合-最终方案-v2.md`
+> **功能需求来源**：`pre-development/final-deliverables/OpenSpec-Superpowers-深度融合-最终方案-v2.md`
 >
-> **架构决策来源**：`pre-development/supercomet-产品形态与开发环境方案-定稿.md` v1.0（2025-06-27 审定）
+> **架构决策来源**：`pre-development/final-deliverables/supercomet-产品形态与开发环境方案-定稿.md` v1.0（2025-06-27 审定）
 
 ---
 

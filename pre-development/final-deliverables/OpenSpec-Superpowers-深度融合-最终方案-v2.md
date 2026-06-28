@@ -444,10 +444,10 @@ test('session expires after 24h inactivity without remember me',
 
 **已吸收但非独立增强项**：
 
-| 能力 | 处理方式 |
-|------|---------|
+| 能力                             | 处理方式                                                                                                      |
+| ------------------------------ | --------------------------------------------------------------------------------------------------------- |
 | Triple Arbitration（Git log 仲裁） | 降级为 `comet-state.sh check` 中的轻量一致性校验。当 `.comet.yaml` phase 与 git log 任务完成状态矛盾时输出警告。不改变 Comet 状态机架构。（低优先级） |
-| spec-compliance-check | 独立审查者角色因 v6.0 统一 reviewer 不再需要。其覆盖矩阵和边界分析方法论已融入 bidirectional-verify 的 `traceability.md` 输出格式。 |
+| spec-compliance-check          | 独立审查者角色因 v6.0 统一 reviewer 不再需要。其覆盖矩阵和边界分析方法论已融入 bidirectional-verify 的 `traceability.md` 输出格式。            |
 
 ---
 
