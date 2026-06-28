@@ -37,7 +37,7 @@ base-ref: d2c1bd5ce13a02ba1fc9fbe655aa3bb7304625ca
 - Produces: coverage matrix data (stdout lines), coverage percentage, list of missing scenarios
 - Exit: 0 if all scenarios matched, 1 otherwise
 
-- [ ] **Step 1: Create script skeleton with argument parsing and usage**
+- [x] **Step 1: Create script skeleton with argument parsing and usage**
 
 ```bash
 #!/usr/bin/env bash
@@ -92,7 +92,7 @@ echo "Forward trace: spec=$SPEC_DIR test=$TEST_DIR output=$OUTPUT_DIR" >&2
 exit 0
 ```
 
-- [ ] **Step 2: Verify script runs and usage works**
+- [x] **Step 2: Verify script runs and usage works**
 
 Run:
 ```bash
@@ -106,7 +106,7 @@ bash src/scripts/comet-forward-trace.sh --spec-dir /tmp --test-dir /tmp --output
 ```
 Expected: Prints "Forward trace: ..." line and exits 0
 
-- [ ] **Step 3: Implement input source priority (v6.0 vs fallback) and scenario extraction**
+- [x] **Step 3: Implement input source priority (v6.0 vs fallback) and scenario extraction**
 
 Replace the `echo "Forward trace..."` line and `exit 0` with:
 
@@ -157,7 +157,7 @@ for s in "${ALL_SCENARIOS[@]}"; do
 done
 ```
 
-- [ ] **Step 4: Implement test file discovery and scenario-to-test matching**
+- [x] **Step 4: Implement test file discovery and scenario-to-test matching**
 
 Append after the scenario listing:
 
@@ -228,7 +228,7 @@ else
 fi
 ```
 
-- [ ] **Step 5: Manually test with temp spec and test files**
+- [x] **Step 5: Manually test with temp spec and test files**
 
 Run:
 ```bash
@@ -253,7 +253,7 @@ rm -rf "$TMP"
 ```
 Expected: coverage 2/3 = 66%, exit 1
 
-- [ ] **Step 6: Second manual test — full coverage**
+- [x] **Step 6: Second manual test — full coverage**
 
 Run:
 ```bash
@@ -277,7 +277,7 @@ rm -rf "$TMP"
 ```
 Expected: coverage 2/2 = 100%, exit 0
 
-- [ ] **Step 7: Commit**
+- [x] **Step 7: Commit**
 
 ```bash
 git add src/scripts/comet-forward-trace.sh
@@ -296,7 +296,7 @@ git commit -m "feat(bidirectional-verify): add forward trace script with scenari
 - Produces: orphan test rows to stdout (pipe-delimited `| tname (file) | (无匹配) | ⚠️ WARN |`)
 - Exit: always 0
 
-- [ ] **Step 1: Create backward trace script**
+- [x] **Step 1: Create backward trace script**
 
 ```bash
 #!/usr/bin/env bash
@@ -395,7 +395,7 @@ done
 exit 0
 ```
 
-- [ ] **Step 2: Manual test — backward trace with orphan**
+- [x] **Step 2: Manual test — backward trace with orphan**
 
 Run:
 ```bash
@@ -418,7 +418,7 @@ rm -rf "$TMP"
 ```
 Expected: One orphan row, exit 0
 
-- [ ] **Step 3: Commit**
+- [x] **Step 3: Commit**
 
 ```bash
 git add src/scripts/comet-backward-trace.sh
@@ -436,7 +436,7 @@ git commit -m "feat(bidirectional-verify): add backward trace script for orphan 
 - Consumes: output of comet-backward-trace.sh (orphan rows)
 - Produces: `traceability.md` with 5 sections + `GATE: PASS/BLOCKED` final line
 
-- [ ] **Step 1: Add backward-trace delegation and report assembly to comet-forward-trace.sh**
+- [x] **Step 1: Add backward-trace delegation and report assembly to comet-forward-trace.sh**
 
 In `comet-forward-trace.sh`, after the gate determination and before the final `exit`, replace the current `echo "Gate: $GATE"` block with the full traceability.md writer:
 
@@ -522,7 +522,7 @@ else
 fi
 ```
 
-- [ ] **Step 2: Verify the script now produces traceability.md**
+- [x] **Step 2: Verify the script now produces traceability.md**
 
 Run:
 ```bash
@@ -547,7 +547,7 @@ rm -rf "$TMP"
 ```
 Expected: Full 5-section traceability.md with `GATE: PASS`, exit 0
 
-- [ ] **Step 3: Verify BLOCKED output with GATE: BLOCKED**
+- [x] **Step 3: Verify BLOCKED output with GATE: BLOCKED**
 
 Run:
 ```bash
@@ -572,7 +572,7 @@ rm -rf "$TMP"
 ```
 Expected: `GATE: BLOCKED`, exit 1
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git add src/scripts/comet-forward-trace.sh
@@ -586,7 +586,7 @@ git commit -m "feat(bidirectional-verify): add traceability.md assembly with 5-s
 **Files:**
 - Create: `src/skills/bidirectional-verify/SKILL.md`
 
-- [ ] **Step 1: Create SKILL.md**
+- [x] **Step 1: Create SKILL.md**
 
 ```markdown
 # bidirectional-verify Skill
@@ -669,7 +669,7 @@ bash comet/scripts/comet-forward-trace.sh \
 - 无外部依赖
 ```
 
-- [ ] **Step 2: Commit**
+- [x] **Step 2: Commit**
 
 ```bash
 git add src/skills/bidirectional-verify/SKILL.md
@@ -683,7 +683,7 @@ git commit -m "feat(bidirectional-verify): add skill definition SKILL.md with pr
 **Files:**
 - Modify: `bin/supercomet.js` (implement `init` subcommand)
 
-- [ ] **Step 1: Implement `cmdInit` function in supercomet.js**
+- [x] **Step 1: Implement `cmdInit` function in supercomet.js**
 
 Replace the `if (cmd === 'init')` block (lines 17-19) in `bin/supercomet.js`:
 
@@ -803,7 +803,7 @@ function main() {
 main();
 ```
 
-- [ ] **Step 2: Test init — first run**
+- [x] **Step 2: Test init — first run**
 
 Run:
 ```bash
@@ -818,7 +818,7 @@ rm -rf "$TMP"
 ```
 Expected: Scripts and reference doc deployed to comet/ directory
 
-- [ ] **Step 3: Test init — idempotency (second run does not error)**
+- [x] **Step 3: Test init — idempotency (second run does not error)**
 
 Run:
 ```bash
@@ -838,7 +838,7 @@ rm -rf "$TMP"
 ```
 Expected: Both runs succeed with no errors
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git add bin/supercomet.js
@@ -852,7 +852,7 @@ git commit -m "feat(bidirectional-verify): implement supercomet init subcommand 
 **Files:**
 - Create: `test/shell/bidirectional-verify.bats`
 
-- [ ] **Step 1: Create the BATS test file**
+- [x] **Step 1: Create the BATS test file**
 
 ```bash
 #!/usr/bin/env bats
@@ -1019,7 +1019,7 @@ EOF
 }
 ```
 
-- [ ] **Step 2: Install BATS if not available and run tests**
+- [x] **Step 2: Install BATS if not available and run tests**
 
 Run:
 ```bash
@@ -1032,7 +1032,7 @@ bats test/shell/bidirectional-verify.bats --verbose
 ```
 Expected: All 7 tests PASS
 
-- [ ] **Step 3: If tests fail, fix and re-run**
+- [x] **Step 3: If tests fail, fix and re-run**
 
 If any test fails, inspect the specific test output and fix either the test (if it has the wrong expectation) or the script (if it has a bug), then re-run:
 
@@ -1041,7 +1041,7 @@ bats test/shell/bidirectional-verify.bats --verbose
 ```
 Expected: All 7 tests PASS
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git add test/shell/bidirectional-verify.bats
