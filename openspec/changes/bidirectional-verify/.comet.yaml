@@ -1,5 +1,5 @@
 workflow: full
-phase: verify
+phase: archive
 context_compression: off
 build_mode: executing-plans
 build_command: "bats test/shell/bidirectional-verify.bats"
@@ -14,11 +14,11 @@ auto_transition: true
 base_ref: d2c1bd5ce13a02ba1fc9fbe655aa3bb7304625ca
 design_doc: docs/superpowers/specs/2026-06-28-bidirectional-verify-design.md
 plan: docs/superpowers/plans/2026-06-28-bidirectional-verify.md
-verify_result: pending
+verify_result: pass
 verification_report: docs/superpowers/reports/2026-06-28-bidirectional-verify-verify.md
-branch_status: pending
+branch_status: handled
 created_at: 2026-06-28
-verified_at: null
+verified_at: 2026-06-28
 archived: false
 handoff_context: openspec/changes/bidirectional-verify/.comet/handoff/design-context.json
 handoff_hash: 58d7392aec7c7be21aaa341acafd140bffd4de0b8648d4c84aafe26b635cb029
