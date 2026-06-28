@@ -50,7 +50,7 @@ function checkCometPrerequisites() {
   // Detect if @rpamis/comet package is installed (globally or locally)
   let cometPkgVer = null;
   try {
-    const out = execSync('npm list @rpamis/comet --depth=0 --json 2>/dev/null', {
+    const out = execSync('npm list -g @rpamis/comet --depth=0 --json 2>/dev/null', {
       cwd: process.cwd(),
       stdio: ['ignore', 'pipe', 'ignore'],
       timeout: 5000
