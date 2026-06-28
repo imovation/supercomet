@@ -1,5 +1,5 @@
 workflow: full
-phase: build
+phase: verify
 context_compression: off
 build_mode: executing-plans
 build_command: "bats test/shell/comet-trace.bats"
@@ -9,13 +9,13 @@ subagent_dispatch: null
 tdd_mode: tdd
 review_mode: off
 isolation: branch
-verify_mode: null
+verify_mode: full
 auto_transition: true
 base_ref: 3d64dc22e3737622fa6dcdfd5eab71a2205b8457
 design_doc: docs/superpowers/specs/2026-06-28-three-d-traceability-design.md
 plan: docs/superpowers/plans/2026-06-28-three-d-traceability.md
 verify_result: pending
-verification_report: null
+verification_report: docs/superpowers/reports/2026-06-28-three-d-traceability-verify.md
 branch_status: pending
 created_at: 2026-06-28
 verified_at: null
