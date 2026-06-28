@@ -44,29 +44,12 @@ function semverSatisfies(version, range) {
 function checkCometPrerequisites() {
   const issued = [];
 
-  // Check for Comet core script in multiple locations
-  const cwd = process.cwd();
-  const candidates = [
-    resolve(cwd, 'comet', 'scripts', 'comet-env.sh'),
-    resolve(cwd, '.opencode', 'skills', 'comet', 'scripts', 'comet-env.sh'),
-  ];
-
-  // Also search for comet-env.sh in known skill directories
-  try {
-    const home = require('os').homedir();
-    const extra = execSync(
-      `find "${home}"/.*/skills "${home}"/.config -path '*/comet/scripts/comet-env.sh' -type f 2>/dev/null | head -1`,
-      { timeout: 3000, stdio: ['ignore', 'pipe', 'ignore'] }
-    ).toString().trim();
-    if (extra) candidates.push(extra);
-  } catch {}
-
-  const hasComet = candidates.some(p => existsSync(p));
+  const cometEnv = resolve(process.cwd(), 'comet', 'scripts', 'comet-env.sh');
+  const hasComet = existsSync(cometEnv);
 
   if (!hasComet) {
-    issued.push('WARN: comet-env.sh not found — Comet may not be installed in this project.');
-    issued.push('      Install and initialize Comet:');
-    issued.push('      npm install --save-dev @rpamis/comet && npx comet init');
+    issued.push('WARN: comet-env.sh not found — Comet not initialized in this project.');
+    issued.push('      Run "npx comet init" first, then "supercomet init".');
   }
 
   // Check Comet version via npm
@@ -159,6 +142,7 @@ function main() {
     }
   } catch {
     console.log('NOTE: @rpamis/comet is a peer dependency. Install: npm install -g @rpamis/comet');
+    console.log('      Then run "npx comet init" in your project before "supercomet init".');
   }
 
   const args = process.argv.slice(2);

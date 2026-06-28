@@ -49,7 +49,11 @@ npm uninstall -g supercomet
 ## 使用
 
 ```bash
-# 部署增强到当前项目（自动预检 Comet 是否存在及版本）
+# 1. 安装并初始化 Comet（如未执行）
+npm install --save-dev @rpamis/comet
+npx comet init
+
+# 2. 部署 supercomet 增强（自动预检 Comet 是否已初始化）
 supercomet init
 
 # 跳过预检，强制部署
