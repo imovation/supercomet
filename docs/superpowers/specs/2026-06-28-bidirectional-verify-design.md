@@ -2,6 +2,8 @@
 comet_change: bidirectional-verify
 role: technical-design
 canonical_spec: openspec
+archived-with: 2026-06-28-bidirectional-verify
+status: final
 ---
 
 # bidirectional-verify Design Doc

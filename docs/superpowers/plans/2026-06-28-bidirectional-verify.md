@@ -2,6 +2,7 @@
 change: bidirectional-verify
 design-doc: docs/superpowers/specs/2026-06-28-bidirectional-verify-design.md
 base-ref: d2c1bd5ce13a02ba1fc9fbe655aa3bb7304625ca
+archived-with: 2026-06-28-bidirectional-verify
 ---
 
 # bidirectional-verify Implementation Plan
@@ -24,6 +25,7 @@ base-ref: d2c1bd5ce13a02ba1fc9fbe655aa3bb7304625ca
 - traceability.md must end with `GATE: PASS` or `GATE: BLOCKED` on its own line
 - BATS tests cover: 100% coverage (PASS), partial coverage (BLOCKED), orphan tests (WARN), fallback mode
 
+archived-with: 2026-06-28-bidirectional-verify
 ---
 
 ### Task 1: 正向反查脚本 comet-forward-trace.sh（场景提取 + 测试匹配）
@@ -284,6 +286,7 @@ git add src/scripts/comet-forward-trace.sh
 git commit -m "feat(bidirectional-verify): add forward trace script with scenario extraction and test matching"
 ```
 
+archived-with: 2026-06-28-bidirectional-verify
 ---
 
 ### Task 2: 反向反查脚本 comet-backward-trace.sh（孤儿测试检测）
@@ -425,6 +428,7 @@ git add src/scripts/comet-backward-trace.sh
 git commit -m "feat(bidirectional-verify): add backward trace script for orphan test detection"
 ```
 
+archived-with: 2026-06-28-bidirectional-verify
 ---
 
 ### Task 3: traceability.md 组装（将正向 + 反向输出合成为 5 段式报告）
@@ -579,6 +583,7 @@ git add src/scripts/comet-forward-trace.sh
 git commit -m "feat(bidirectional-verify): add traceability.md assembly with 5-section report and GATE line"
 ```
 
+archived-with: 2026-06-28-bidirectional-verify
 ---
 
 ### Task 4: Skill 定义 SKILL.md
@@ -676,6 +681,7 @@ git add src/skills/bidirectional-verify/SKILL.md
 git commit -m "feat(bidirectional-verify): add skill definition SKILL.md with protocol and degradation strategy"
 ```
 
+archived-with: 2026-06-28-bidirectional-verify
 ---
 
 ### Task 5: CLI init 子命令 — 部署脚本和参考文档
@@ -845,6 +851,7 @@ git add bin/supercomet.js
 git commit -m "feat(bidirectional-verify): implement supercomet init subcommand for script deployment"
 ```
 
+archived-with: 2026-06-28-bidirectional-verify
 ---
 
 ### Task 6: BATS 测试
@@ -1048,6 +1055,7 @@ git add test/shell/bidirectional-verify.bats
 git commit -m "test(bidirectional-verify): add BATS tests for forward, backward, and fallback paths"
 ```
 
+archived-with: 2026-06-28-bidirectional-verify
 ---
 
 ## Self-Review Checklist
