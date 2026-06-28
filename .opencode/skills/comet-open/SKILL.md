@@ -15,6 +15,31 @@ description: "Comet 阶段 1：开启。用 /comet-open 调用。通过 OpenSpec
 
 传递给 OpenSpec 的所有提问和产物要求都必须包含输出语言约束：使用触发本次工作流的用户请求语言。恢复已有 change 且产物已有明确主语言时，除非用户明确要求切换，否则保持该语言。
 
+### 0a. 探索结果检测（comet-speculate 交接）
+
+检查 `openspec/explore-findings.md` 是否存在：
+
+```bash
+EXPLORE_FILE="openspec/explore-findings.md"
+if [ -f "$EXPLORE_FILE" ]; then
+  echo "INFO: 检测到 explore-findings.md，将注入为 proposal 上下文" >&2
+fi
+```
+
+**如果文件存在**：
+1. 读取 `openspec/explore-findings.md` 的 Summary 和 Recommendation 节
+2. 在 Step 1a PRD 拆分预检和 Step 1b 需求澄清时，将探索结果作为已知上下文引用
+3. 在 Step 2 创建 proposal.md 时，在 proposal 中注明「基于 explore-findings.md 探索结果」，并将探索的 Summary + Recommendation 作为设计依据
+
+**版本检测**：
+- 读取 explore-findings.md 的 Version 字段
+- 若 Version > 1，发出 INFO 提示（版本不匹配但仍尝试使用）
+- 若 Version 字段不存在，假定为 Version 1
+
+**如果文件不存在**：
+- 静默跳过，不做任何操作
+- 不提示用户或输出警告（explore-findings.md 是可选探索结果）
+
 ### 1. 探索想法与需求澄清
 
 **立即执行：** 使用 Skill 工具加载 `openspec-explore` 技能。禁止跳过此步骤。
