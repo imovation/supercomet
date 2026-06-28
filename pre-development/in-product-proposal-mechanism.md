@@ -11,54 +11,74 @@
 - **无跟踪**：写在文件里的提案无人跟进，容易石沉大海
 - **与 Comet 割裂**：提案是提案，change 是 change，两者没有自动衔接
 - **无社区参与**：单机操作，只有自己看得到
+- **质量不可控**：人写的提案存在根因分析错误、问题描述歧义、建议方向偏差等问题，会误导新会话的 AI。AI 读到的"问题"可能是伪问题，"根因"可能是表象
 
 ## 建议方案
 
-### CLI 命令
+### 核心思路：AI 驱动自动提案
 
-```bash
-supercomet propose              # 交互式创建提案（引导填写模板）
-supercomet propose --list       # 列出所有待处理提案
-supercomet propose --open <id>  # 基于某个提案直接 /comet-open
-supercomet propose --close <id> # 标记提案为已处理
+人类手动发现 → 写提案 → AI 读，这条链路存在信息损失和失真。
+
+正确链路应该是：
+
+```
+AI 在使用 supercomet 过程中自动感知异常
+  → AI 自动生成提案（结构化、可追溯、带证据）
+    → 人工审核确认
+      → /comet
 ```
 
-### 提案模板（标准化）
+### 自动发现触发点
 
-`openspec/proposals/<YYYY-MM-DD>-<slug>.md`：
+supercomet 在以下时机自动评估是否需要提案：
+
+| 触发时机 | 发现内容 | 示例 |
+|---------|---------|------|
+| `/comet-verify` 失败 | 流程阻塞点、重复失败模式 | 同一类验证失败出现 3 次 → 提案"验证失败自动分类" |
+| `supercomet init` 被 `--force` | 预检机制设计问题 | `--force` 使用频率高 → 提案"降低预检误报" |
+| 归档后提交次数异常 | 流程真空（amend 需求） | 归档后 3 天内 5+ 次非 Comet 提交 → 提案"归档后修补入口" |
+| BATS 测试失败模式 | 脚本正确性问题 | 特定脚本在特定 Comet 版本持续失败 → 提案"兼容性适配" |
+| 会话中用户重复表达困惑 | UX / 文档问题 | 同一概念被问 3 次 → 提案"文档补充" |
+| CI Sentinel 连续失败 | 上游断裂 | 3 天连续失败 → 提案"紧急适配" |
+
+### 提案自动生成
+
+AI 发现问题后，自动创建结构化提案：
 
 ```markdown
 ---
-status: draft | accepted | implemented | rejected
+status: ai-generated
 created: 2026-06-28
-author: <user>
+discovered-by: supercomet-agent
+discovery-context: /comet-verify phase, change=init-preflight-check
+evidence:
+  - commit: abc123 (direct-to-master bypass)
+  - session-log: .superpowers/sdd/progress.md
+confidence: high | medium | low
 ---
 
-## 问题
+## 观察到的问题
 
-<!-- 描述遇到的问题或发现的机会 -->
+<!-- AI 根据实际运行日志、错误输出、用户行为自动填写 -->
+
+## 推断的根因
+
+<!-- AI 基于上下文分析 -->
 
 ## 建议方向
 
-<!-- 2-3 个可能的方案，含优缺点 -->
-
-## 影响评估
-
-<!-- 对现有功能、架构、用户的影响 -->
-
-## 关联
-
-<!-- 关联的已归档 change、上游 issue 等 -->
+<!-- 2-3 个方案，含工作量估算 -->
 ```
 
-### 与 Comet 衔接
+关键：`confidence` 字段标注 AI 对分析的信心，低信心提案人工审核门槛更高。
 
-1. `supercomet propose` → 生成标准化提案文件
-2. 提案文件包含 `status: accepted` 后，`/comet-open` 可自动读取
-3. Change 归档时，关联的提案自动标记为 `implemented`
-4. archive 目录中包含提案 → change 的双向链接
+### 人工审核环
 
-### 可选：GitHub Issue 同步
+AI 生成的提案进入 `openspec/proposals/` 目录：
 
-- `supercomet propose --sync` 将提案同步为 GitHub Issue
-- 社区可在 Issue 上讨论，结论回写到提案文件
+1. `supercomet proposals` 列出所有待审核提案，按 confidence 排序
+2. 人工对每条提案选择：确认、修正根因、拒绝（附理由）
+3. 确认后 `status: accepted`，可直接 `/comet-open`
+4. 被拒绝的提案作为训练数据，提升后续准确率
+
+
