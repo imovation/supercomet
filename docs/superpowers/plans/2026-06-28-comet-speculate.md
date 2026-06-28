@@ -2,6 +2,7 @@
 change: comet-speculate
 design-doc: docs/superpowers/specs/2026-06-28-comet-speculate-design.md
 base-ref: 4b1b4b21b4f8ade0c85a944cce34805ed2f434ed
+archived-with: 2026-06-28-comet-speculate
 ---
 
 # comet-speculate Implementation Plan
@@ -26,6 +27,7 @@ base-ref: 4b1b4b21b4f8ade0c85a944cce34805ed2f434ed
 - Shell 脚本放在 `src/scripts/`，部署到 `comet/scripts/`
 - CLI 入口在 `bin/supercomet.js`，`supercomet init` 负责部署
 
+archived-with: 2026-06-28-comet-speculate
 ---
 
 ### Task 1: comet-speculate SKILL.md
@@ -165,6 +167,7 @@ git add src/skills/comet-speculate/SKILL.md
 git commit -m "feat: add comet-speculate SKILL.md"
 ```
 
+archived-with: 2026-06-28-comet-speculate
 ---
 
 ### Task 2: comet-quick-speculate SKILL.md
@@ -256,6 +259,7 @@ git add src/skills/comet-quick-speculate/SKILL.md
 git commit -m "feat: add comet-quick-speculate SKILL.md"
 ```
 
+archived-with: 2026-06-28-comet-speculate
 ---
 
 ### Task 3: comet-speculate.sh 核心脚本
@@ -638,6 +642,7 @@ git add src/scripts/comet-speculate.sh
 git commit -m "feat: add comet-speculate.sh core script"
 ```
 
+archived-with: 2026-06-28-comet-speculate
 ---
 
 ### Task 4: BATS 单元测试
@@ -1069,6 +1074,7 @@ git add test/shell/comet-speculate.bats
 git commit -m "test: add comet-speculate.bats tests"
 ```
 
+archived-with: 2026-06-28-comet-speculate
 ---
 
 ### Task 5: /comet-open Skill 集成
@@ -1130,6 +1136,7 @@ git add .opencode/skills/comet-open/SKILL.md
 git commit -m "feat: integrate comet-speculate findings into /comet-open"
 ```
 
+archived-with: 2026-06-28-comet-speculate
 ---
 
 ### Task 6: supercomet init 部署更新
@@ -1221,6 +1228,7 @@ git add bin/supercomet.js
 git commit -m "feat: generalize supercomet init to deploy all skills and scripts"
 ```
 
+archived-with: 2026-06-28-comet-speculate
 ---
 
 ### Task 7: 集成测试 —— 探索到 Open 交接
@@ -1410,6 +1418,7 @@ git add test/integration/comet-speculate-to-open.bats
 git commit -m "test: add comet-speculate-to-open integration tests"
 ```
 
+archived-with: 2026-06-28-comet-speculate
 ---
 
 ### Task 8: 上游 PR 准备（文档）
@@ -1476,6 +1485,7 @@ git add pre-development/comet-speculate-upstream-pr.md
 git commit -m "docs: add upstream PR preparation for comet-speculate"
 ```
 
+archived-with: 2026-06-28-comet-speculate
 ---
 
 ## Self-Review

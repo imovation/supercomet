@@ -2,6 +2,8 @@
 comet_change: comet-speculate
 role: technical-design
 canonical_spec: openspec
+archived-with: 2026-06-28-comet-speculate
+status: final
 ---
 
 # comet-speculate — Technical Design
