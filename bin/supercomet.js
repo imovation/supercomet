@@ -49,7 +49,7 @@ function checkCometPrerequisites() {
 
   if (!hasComet) {
     issued.push('WARN: comet-env.sh not found — Comet not initialized in this project.');
-    issued.push('      Run "npx comet init" first, then "supercomet init".');
+    issued.push('      Run "comet init" first, then "supercomet init".');
   }
 
   // Check Comet version via npm
@@ -142,7 +142,7 @@ function main() {
     }
   } catch {
     console.log('NOTE: @rpamis/comet is a peer dependency. Install: npm install -g @rpamis/comet');
-    console.log('      Then run "npx comet init" in your project before "supercomet init".');
+    console.log('      Then run "comet init" in your project before "supercomet init".');
   }
 
   const args = process.argv.slice(2);
