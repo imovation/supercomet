@@ -1,0 +1,14 @@
+{
+  "change": "three-d-traceability",
+  "phase": "design",
+  "mode": "compact",
+  "canonical_spec": "openspec",
+  "generated_by": "comet-handoff.sh",
+  "context_hash": "24967bc53166ce618af9b1f2bcb8abc9c69cf199569c69d8b9124aa5758584ee",
+  "files": [
+    { "path": "openspec/changes/three-d-traceability/proposal.md", "sha256": "6e3c34246a035aaf913fe78adc6de28915508b887c25f925a2364d4c064821d3" },
+    { "path": "openspec/changes/three-d-traceability/design.md", "sha256": "867941126edb1cc32367969f5594e2a23f0ebb971561e486bc6807cf72be57f3" },
+    { "path": "openspec/changes/three-d-traceability/tasks.md", "sha256": "b91e2c5901030149bd9e70284177c94765e1c5abe6314c772355879800f72460" },
+    { "path": "openspec/changes/three-d-traceability/specs/three-d-traceability/spec.md", "sha256": "e7ab7182e4f184f46c7a6eab88e6ecd0ae851872fbddf567732b6022eaccd6cb" }
+  ]
+}
