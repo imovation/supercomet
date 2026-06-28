@@ -1,5 +1,5 @@
 workflow: full
-phase: build
+phase: verify
 context_compression: off
 build_mode: executing-plans
 build_command: "bats test/shell/bidirectional-verify.bats"
@@ -9,7 +9,7 @@ subagent_dispatch: null
 tdd_mode: tdd
 review_mode: off
 isolation: branch
-verify_mode: null
+verify_mode: full
 auto_transition: true
 base_ref: d2c1bd5ce13a02ba1fc9fbe655aa3bb7304625ca
 design_doc: docs/superpowers/specs/2026-06-28-bidirectional-verify-design.md
